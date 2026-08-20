@@ -36,3 +36,138 @@ section{padding:90px 7vw}.head{display:flex;justify-content:space-between;align-
 body.welcomeLocked{overflow:hidden}
 @media(max-width:620px){.welcomePanel{padding:28px 16px 18px;border-radius:24px}.welcomePanel h2{font-size:25px}.welcomeGrid{grid-template-columns:repeat(2,1fr);gap:10px}.welcomeCard{min-height:116px}.welcomeIcon{width:42px;height:42px}}
 .socialLinks{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}.socialLinks a{display:inline-flex;align-items:center;gap:6px}
+/* ===== MOBILE DESKTOP-LIKE LAYOUT ===== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+  body {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* الحاوية الرئيسية */
+  .container,
+  .wrapper,
+  .content,
+  main,
+  section {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* تقليل المساحات الجانبية */
+  .container,
+  .wrapper {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    padding: 15px 10px !important;
+  }
+
+  .hero img {
+    width: 75% !important;
+    max-width: 330px !important;
+    height: auto !important;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 7vw, 42px) !important;
+    margin: 8px 0 !important;
+  }
+
+  .hero p {
+    font-size: 15px !important;
+    margin: 5px 0 !important;
+  }
+
+  /* ===== SOCIAL BUTTONS ===== */
+  .social-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .social-links a,
+  .social-links button {
+    flex: 1 1 45% !important;
+    max-width: 48% !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    padding: 10px 8px !important;
+    font-size: 14px !important;
+  }
+
+  /* ===== CATEGORY ICONS ===== */
+  .categories,
+  .category-grid,
+  .categories-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .category,
+  .category-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+
+  .category img,
+  .category-card img {
+    width: 100% !important;
+    max-width: 85px !important;
+    height: auto !important;
+    margin: auto !important;
+  }
+
+  .category h3,
+  .category-card h3 {
+    font-size: 13px !important;
+  }
+
+  /* ===== PRODUCTS ===== */
+  .products,
+  .product-grid,
+  .products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .product,
+  .product-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 8px !important;
+  }
+
+  .product img
