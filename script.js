@@ -1,393 +1,56 @@
 const API_URL="https://script.google.com/macros/s/AKfycbwRqTIUQbtFqteREbs73oyZntiar31KhwzmjjqYOwlUKxRBQSnDmJnwBxW9IyWYWaam/exec";
 const WA="201275728930";
-
-const products=[
-{"n":"Omega Classic Silver","d":"Omega — فضي كلاسيك","p":350,"img":"images/1000467266.jpg","cat":"كلاسيك"},
-{"n":"Omega Classic Blue","d":"Omega — أزرق فاخر","p":350,"img":"images/1000467267.jpg","cat":"كلاسيك"},
-{"n":"Omega Classic Ice Blue","d":"Omega — أزرق سماوي","p":350,"img":"images/1000467268.jpg","cat":"كلاسيك"},
-{"n":"Omega Classic Purple","d":"Omega — بنفسجي فاخر","p":350,"img":"images/1000467269.jpg","cat":"كلاسيك"},
-{"n":"Omega Classic Black","d":"Omega — أسود أنيق","p":350,"img":"images/1000467270.jpg","cat":"كلاسيك"},
-
-{"n":"Rolex Datejust White","d":"Rolex — أبيض كلاسيك","p":500,"img":"images/1000467431.jpg","cat":"كلاسيك"},
-{"n":"Rolex Datejust Turquoise","d":"Rolex — تركواز","p":500,"img":"images/1000467432.jpg","cat":"كلاسيك"},
-{"n":"Rolex Datejust Blue Roman","d":"Rolex — أزرق رومان","p":500,"img":"images/1000467433.jpg","cat":"كلاسيك"},
-{"n":"Rolex Datejust Royal Blue","d":"Rolex — أزرق ملكي","p":500,"img":"images/1000467434.jpg","cat":"كلاسيك"},
-{"n":"Rolex Datejust Dark Green","d":"Rolex — أخضر داكن","p":500,"img":"images/1000467435.jpg","cat":"كلاسيك"},
-{"n":"Rolex Datejust Champagne","d":"Rolex — شامبين","p":500,"img":"images/1000467436.jpg","cat":"كلاسيك"},
-
-{"n":"Tissot Classic Black","d":"Tissot — أسود كلاسيك","p":250,"img":"images/1000467437.jpg","cat":"كلاسيك جلد"},
-{"n":"Patek Philippe Classic White","d":"Patek Philippe — أبيض كلاسيك","p":250,"img":"images/1000467438.jpg","cat":"كلاسيك جلد"},
-{"n":"Hublot Classic Blue","d":"Hublot — أزرق فاخر","p":250,"img":"images/1000467439.jpg","cat":"كلاسيك جلد"},
-{"n":"Rolex Leather White","d":"Rolex — أبيض بحزام جلد","p":250,"img":"images/1000467440.jpg","cat":"كلاسيك جلد"},
-{"n":"Tissot Chronograph White","d":"Tissot — كرونوغراف أبيض","p":250,"img":"images/1000467441.jpg","cat":"كلاسيك جلد"},
-{"n":"Omega Classic Black","d":"Omega — أسود كلاسيك","p":250,"img":"images/1000467442.jpg","cat":"كلاسيك جلد"},
-{"n":"Hublot Chronograph Blue","d":"Hublot — كرونوغراف أزرق","p":250,"img":"images/1000467443.jpg","cat":"كلاسيك جلد"},
-{"n":"Omega Classic White","d":"Omega — أبيض كلاسيك","p":250,"img":"images/1000467444.jpg","cat":"كلاسيك جلد"},
-{"n":"Hublot Fusion Black","d":"Hublot — أسود فاخر","p":250,"img":"images/1000467445.jpg","cat":"كلاسيك جلد"},
-
-{"n":"Rolex Lady-Datejust Black","d":"Rolex — حريمي أسود","p":300,"img":"images/1000467447.jpg","cat":"حريمي"},
-{"n":"Rolex Lady-Datejust White","d":"Rolex — حريمي أبيض","p":300,"img":"images/1000467448.jpg","cat":"حريمي"},
-{"n":"Rolex Lady-Datejust Diamond","d":"Rolex — حريمي دايموند","p":300,"img":"images/1000467449.jpg","cat":"حريمي"},
-{"n":"Rolex Lady-Datejust Gold","d":"Rolex — حريمي جولد","p":300,"img":"images/1000467450.jpg","cat":"حريمي"},
-{"n":"Rolex Lady-Datejust Silver","d":"Rolex — حريمي فضي","p":300,"img":"images/1000467451.jpg","cat":"حريمي"},
-{"n":"Rolex Lady-Datejust Pearl","d":"Rolex — حريمي لؤلؤي","p":300,"img":"images/1000467452.jpg","cat":"حريمي"},
-
-{"n":"Rolex Oyster Perpetual Silver","d":"Rolex — فضي كلاسيك","p":350,"img":"images/1000467453.jpg","cat":"كلاسيك"},
-{"n":"Rolex Oyster Perpetual Gold","d":"Rolex — جولد كلاسيك","p":350,"img":"images/1000467454.jpg","cat":"كلاسيك"},
-{"n":"Rolex Oyster Perpetual Champagne","d":"Rolex — شامبين كلاسيك","p":350,"img":"images/1000467455.jpg","cat":"كلاسيك"},
-{"n":"Rolex Oyster Perpetual Black","d":"Rolex — أسود كلاسيك","p":350,"img":"images/1000467456.jpg","cat":"كلاسيك"},
-
-{"n":"Swarovski Style Bracelet Gold","d":"Swarovski Style — أسورة جولد","p":200,"img":"images/1000467457.jpg","cat":"حريمي"},
-  {"n":"Cartier Style Bracelet Gold","d":"Cartier Style — أسورة جولد","p":200,"img":"images/1000467459.jpg","cat":"حريمي"},
-{"n":"Tiffany Style Bracelet Silver","d":"Tiffany Style — أسورة فضي","p":200,"img":"images/1000467460.jpg","cat":"حريمي"},
-{"n":"Michael Kors Style Bracelet","d":"Michael Kors Style — أسورة أنيقة","p":200,"img":"images/1000467461.jpg","cat":"حريمي"},
-{"n":"Pandora Style Bracelet","d":"Pandora Style — أسورة فاخرة","p":200,"img":"images/1000467462.jpg","cat":"حريمي"},
-
-{"n":"Smartwatch Digital White","d":"Smartwatch — أبيض","p":100,"img":"images/1000467463.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Pink","d":"Smartwatch — بينك","p":100,"img":"images/1000467464.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Orange","d":"Smartwatch — برتقالي","p":100,"img":"images/1000467465.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Black","d":"Smartwatch — أسود","p":100,"img":"images/1000467466.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Yellow","d":"Smartwatch — أصفر","p":100,"img":"images/1000467467.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Orange II","d":"Smartwatch — برتقالي II","p":100,"img":"images/1000467468.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Yellow II","d":"Smartwatch — أصفر II","p":100,"img":"images/1000467469.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital White II","d":"Smartwatch — أبيض II","p":100,"img":"images/1000467470.jpg","cat":"سمارت"},
-{"n":"Smartwatch Digital Red","d":"Smartwatch — أحمر","p":100,"img":"images/1000467471.jpg","cat":"سمارت"},
-
-{"n":"Omega Leather — موديل 2","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467746.jpg","cat":"كلاسيك جلد"},
-{"n":"Omega Leather — موديل 3","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467747.jpg","cat":"كلاسيك جلد"},
-{"n":"Omega Leather — موديل 4","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467748.jpg","cat":"كلاسيك جلد"},
-{"n":"Omega Leather — موديل 5","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467749.jpg","cat":"كلاسيك جلد"},
-
-{"n":"بوكس ساعة رجالي — موديل 1","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467720.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة رجالي — موديل 2","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467721.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة رجالي — موديل 3","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467722.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة رجالي — موديل 4","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467723.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة رجالي — موديل 5","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467724.jpg","cat":"بوكسات"},
-
-{"n":"بوكس ساعة وإنسيال حريمي — موديل 1","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467725.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة وإنسيال حريمي — موديل 2","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467726.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة وإنسيال حريمي — موديل 3","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467727.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة وإنسيال حريمي — موديل 4","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467728.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة وإنسيال حريمي — موديل 5","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467729.jpg","cat":"بوكسات"},
-{"n":"بوكس ساعة وإنسيال حريمي — موديل 6","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467730.jpg","cat":"بوكسات"}
-];
-
-let cart=[],current=0;
-
-const sectionMap=[
-{id:"classic",title:"الساعات الكلاسيك",sub:"اختيارات كلاسيكية بتفاصيل مميزة",filter:"كلاسيك",price:""},
-{id:"leather",title:"كلاسيك جلد",sub:"ستايل يومي مميز",filter:"كلاسيك جلد",price:""},
-{id:"women",title:"الحريمي",sub:"ساعات وأسورة حريمي — اختيارات ناعمة وأنيقة",filter:"حريمي",price:""},
-{id:"boxes",title:"البوكسات",sub:"ساعة وإكسسوارات داخل بوكس أنيق",filter:"بوكسات",price:""},
-{id:"smart",title:"سمارت",sub:"ساعات سمارت بألوان مختلفة",filter:"سمارت",price:""}
-];
-
-function renderSections(){
-  const host=document.getElementById("categorySections");
-  host.innerHTML=sectionMap.map(s=>{
-    const arr=products.filter(p=>p.cat===s.filter);
-
-    return 
-      <section class="categorySection" id="${s.id}">
-        <div class="sectionTitle">
-          <div>
-            <small>WATCHY COLLECTION</small>
-            <h2>${s.title}</h2>
-            <p>${s.sub}</p>
-          </div>
-          <a href="#shop">↑ كل المنتجات</a>
-        </div>
-        <div class="grid">
-          ${arr.map(p=>productCard(p)).join("")}
-        </div>
-      </section>
-    ;
-  }).join("");
+const products=[{"n":"Omega Classic Silver","d":"Omega — فضي كلاسيك","p":350,"img":"images/1000467266.jpg","cat":"كلاسيك"},{"n":"Omega Classic Blue","d":"Omega — أزرق فاخر","p":350,"img":"images/1000467267.jpg","cat":"كلاسيك"},{"n":"Omega Classic Ice Blue","d":"Omega — أزرق سماوي","p":350,"img":"images/1000467268.jpg","cat":"كلاسيك"},{"n":"Omega Classic Purple","d":"Omega — بنفسجي فاخر","p":350,"img":"images/1000467269.jpg","cat":"كلاسيك"},{"n":"Omega Classic Black","d":"Omega — أسود أنيق","p":350,"img":"images/1000467270.jpg","cat":"كلاسيك"},{"n":"Rolex Datejust White","d":"Rolex — أبيض كلاسيك","p":500,"img":"images/1000467431.jpg","cat":"كلاسيك"},{"n":"Rolex Datejust Turquoise","d":"Rolex — تركواز","p":500,"img":"images/1000467432.jpg","cat":"كلاسيك"},{"n":"Rolex Datejust Blue Roman","d":"Rolex — أزرق رومان","p":500,"img":"images/1000467433.jpg","cat":"كلاسيك"},{"n":"Rolex Datejust Royal Blue","d":"Rolex — أزرق ملكي","p":500,"img":"images/1000467434.jpg","cat":"كلاسيك"},{"n":"Rolex Datejust Dark Green","d":"Rolex — أخضر داكن","p":500,"img":"images/1000467435.jpg","cat":"كلاسيك"},{"n":"Rolex Datejust Champagne","d":"Rolex — شامبين","p":500,"img":"images/1000467436.jpg","cat":"كلاسيك"},{"n":"Tissot Classic Black","d":"Tissot — أسود كلاسيك","p":250,"img":"images/1000467437.jpg","cat":"كلاسيك جلد"},{"n":"Patek Philippe Classic White","d":"Patek Philippe — أبيض كلاسيك","p":250,"img":"images/1000467438.jpg","cat":"كلاسيك جلد"},{"n":"Hublot Classic Blue","d":"Hublot — أزرق فاخر","p":250,"img":"images/1000467439.jpg","cat":"كلاسيك جلد"},{"n":"Rolex Leather White","d":"Rolex — أبيض بحزام جلد","p":250,"img":"images/1000467440.jpg","cat":"كلاسيك جلد"},{"n":"Tissot Chronograph White","d":"Tissot — كرونوغراف أبيض","p":250,"img":"images/1000467441.jpg","cat":"كلاسيك جلد"},{"n":"Omega Classic Black","d":"Omega — أسود كلاسيك","p":250,"img":"images/1000467442.jpg","cat":"كلاسيك جلد"},{"n":"Hublot Chronograph Blue","d":"Hublot — كرونوغراف أزرق","p":250,"img":"images/1000467443.jpg","cat":"كلاسيك جلد"},{"n":"Omega Classic White","d":"Omega — أبيض كلاسيك","p":250,"img":"images/1000467444.jpg","cat":"كلاسيك جلد"},{"n":"Hublot Fusion Black","d":"Hublot — أسود فاخر","p":250,"img":"images/1000467445.jpg","cat":"كلاسيك جلد"},{"n":"Rolex Lady-Datejust Black","d":"Rolex — حريمي أسود","p":300,"img":"images/1000467447.jpg","cat":"حريمي"},{"n":"Rolex Lady-Datejust White","d":"Rolex — حريمي أبيض","p":300,"img":"images/1000467448.jpg","cat":"حريمي"},{"n":"Rolex Lady-Datejust Diamond","d":"Rolex — حريمي دايموند","p":300,"img":"images/1000467449.jpg","cat":"حريمي"},{"n":"Rolex Lady-Datejust Gold","d":"Rolex — حريمي جولد","p":300,"img":"images/1000467450.jpg","cat":"حريمي"},{"n":"Rolex Lady-Datejust Silver","d":"Rolex — حريمي فضي","p":300,"img":"images/1000467451.jpg","cat":"حريمي"},{"n":"Rolex Lady-Datejust Pearl","d":"Rolex — حريمي لؤلؤي","p":300,"img":"images/1000467452.jpg","cat":"حريمي"},{"n":"Rolex Oyster Perpetual Silver","d":"Rolex — فضي كلاسيك","p":350,"img":"images/1000467453.jpg","cat":"كلاسيك"},{"n":"Rolex Oyster Perpetual Gold","d":"Rolex — جولد كلاسيك","p":350,"img":"images/1000467454.jpg","cat":"كلاسيك"},{"n":"Rolex Oyster Perpetual Champagne","d":"Rolex — شامبين كلاسيك","p":350,"img":"images/1000467455.jpg","cat":"كلاسيك"},{"n":"Rolex Oyster Perpetual Black","d":"Rolex — أسود كلاسيك","p":350,"img":"images/1000467456.jpg","cat":"كلاسيك"},{"n":"Swarovski Style Bracelet Gold","d":"Swarovski Style — أسورة جولد","p":200,"img":"images/1000467457.jpg","cat":"حريمي"},{"n":"Swarovski Style Bracelet Silver","d":"Swarovski Style — أسورة فضي","p":200,"img":"images/1000467458.jpg","cat":"حريمي"},{"n":"Cartier Style Bracelet Gold","d":"Cartier Style — أسورة جولد","p":200,"img":"images/1000467459.jpg","cat":"حريمي"},{"n":"Tiffany Style Bracelet Silver","d":"Tiffany Style — أسورة فضي","p":200,"img":"images/1000467460.jpg","cat":"حريمي"},{"n":"Michael Kors Style Bracelet","d":"Michael Kors Style — أسورة أنيقة","p":200,"img":"images/1000467461.jpg","cat":"حريمي"},{"n":"Pandora Style Bracelet","d":"Pandora Style — أسورة فاخرة","p":200,"img":"images/1000467462.jpg","cat":"حريمي"},{"n":"Smartwatch Digital White","d":"Smartwatch — أبيض","p":100,"img":"images/1000467463.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Pink","d":"Smartwatch — بينك","p":100,"img":"images/1000467464.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Orange","d":"Smartwatch — برتقالي","p":100,"img":"images/1000467465.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Black","d":"Smartwatch — أسود","p":100,"img":"images/1000467466.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Yellow","d":"Smartwatch — أصفر","p":100,"img":"images/1000467467.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Orange II","d":"Smartwatch — برتقالي II","p":100,"img":"images/1000467468.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Yellow II","d":"Smartwatch — أصفر II","p":100,"img":"images/1000467469.jpg","cat":"سمارت"},{"n":"Smartwatch Digital White II","d":"Smartwatch — أبيض II","p":100,"img":"images/1000467470.jpg","cat":"سمارت"},{"n":"Smartwatch Digital Red","d":"Smartwatch — أحمر","p":100,"img":"images/1000467471.jpg","cat":"سمارت"},{"n":"Omega Leather — موديل 2","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467746.jpg","cat":"كلاسيك جلد"},{"n":"Omega Leather — موديل 3","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467747.jpg","cat":"كلاسيك جلد"},{"n":"Omega Leather — موديل 4","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467748.jpg","cat":"كلاسيك جلد"},{"n":"Omega Leather — موديل 5","d":"ساعة Omega بحزام جلد ","p":300,"img":"images/1000467749.jpg","cat":"كلاسيك جلد"},{"n":"بوكس ساعة رجالي — موديل 1","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467720.jpg","cat":"بوكسات"},{"n":"بوكس ساعة رجالي — موديل 2","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467721.jpg","cat":"بوكسات"},{"n":"بوكس ساعة رجالي — موديل 3","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467722.jpg","cat":"بوكسات"},{"n":"بوكس ساعة رجالي — موديل 4","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467723.jpg","cat":"بوكسات"},{"n":"بوكس ساعة رجالي — موديل 5","d":"ساعة رجالي داخل بوكس أنيق — المنتج ","p":350,"img":"images/1000467724.jpg","cat":"بوكسات"},{"n":"بوكس ساعة وإنسيال حريمي — موديل 1","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467725.jpg","cat":"بوكسات"},{"n":"بوكس ساعة وإنسيال حريمي — موديل 2","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467726.jpg","cat":"بوكسات"},{"n":"بوكس ساعة وإنسيال حريمي — موديل 3","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467727.jpg","cat":"بوكسات"},{"n":"بوكس ساعة وإنسيال حريمي — موديل 4","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467728.jpg","cat":"بوكسات"},{"n":"بوكس ساعة وإنسيال حريمي — موديل 5","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467729.jpg","cat":"بوكسات"},{"n":"بوكس ساعة وإنسيال حريمي — موديل 6","d":"ساعة وإنسيال داخل بوكس أنيق — المنتج ","p":250,"img":"images/1000467730.jpg","cat":"بوكسات"}];
+let cart=[],current=0; const sectionMap=[ {id:"classic",title:"الساعات الكلاسيك",sub:"اختيارات كلاسيكية بتفاصيل مميزة",filter:"كلاسيك",price:""}, {id:"leather",title:"كلاسيك جلد",sub:"ستايل يومي مميز",filter:"كلاسيك جلد",price:""}, {id:"women",title:"الحريمي",sub:"ساعات وأسورة حريمي — اختيارات ناعمة وأنيقة",filter:"حريمي",price:""}, {id:"boxes",title:"البوكسات",sub:"ساعة وإكسسوارات داخل بوكس أنيق",filter:"بوكسات",price:""}, {id:"smart",title:"سمارت",sub:"ساعات سمارت بألوان مختلفة",filter:"سمارت",price:""}
+]; function renderSections(){ const host=document.getElementById("categorySections"); host.innerHTML=sectionMap.map(s=>{ const arr=products.filter(p=>p.cat===s.filter); return `<section class="categorySection" id="${s.id}"> <div class="sectionTitle"><div><small>WATCHY COLLECTION</small><h2>${s.title}</h2><p>${s.sub}</p></div><a href="#shop">↑ كل المنتجات</a></div> <div class="grid">${arr.map(p=>productCard(p)).join("")}</div> </section>`; }).join("");
 }
-
-function productCard(p){
-  const i=products.indexOf(p);
-
-  return 
-    <article>
-      <button class="photoBtn" onclick="openProduct(${i})">
-        <img src="${p.img}" alt="${p.n}" loading="lazy">
-      </button>
-
-      <div class="cardBody">
-        <h3>${p.n}</h3>
-        <p>${p.d}</p>
-        <b>${p.p} ج.م</b>
-        <button class="cardBtn" onclick="add(${i})">أضف للسلة</button>
-      </div>
-    </article>
-  ;
+function productCard(p){ const i=products.indexOf(p); return `<article> <button class="photoBtn" onclick="openProduct(${i})"><img src="${p.img}" alt="${p.n}" loading="lazy"></button> <div class="cardBody"><h3>${p.n}</h3><p>${p.d}</p><b>${p.p} ج.م</b><button class="cardBtn" onclick="add(${i})">أضف للسلة</button></div> </article>`;
 }
-
-function add(i){
-  const p=products[i];
-  cart.push({n:p.n,p:p.p});
-  render();
-  toggleCart(true);
+function add(i){const p=products[i];cart.push({n:p.n,p:p.p});render();toggleCart(true);}
+function render(){ document.getElementById("count").textContent=cart.length; document.getElementById("items").innerHTML=cart.length?cart.map((x,i)=>`<div class="row"><span>${x.n}<small>${x.p} ج.م</small></span><button onclick="cart.splice(${i},1);render()">حذف</button></div>`).join(""):'<p class="empty">السلة فاضية.</p>'; document.getElementById("total").textContent=cart.reduce((a,x)=>a+x.p,0)+" ج.م";
 }
-
-function render(){
-  document.getElementById("count").textContent=cart.length;
-
-  document.getElementById("items").innerHTML=cart.length
-    ? cart.map((x,i)=>
-        <div class="row">
-          <span>${x.n}<small>${x.p} ج.م</small></span>
-          <button onclick="cart.splice(${i},1);render()">حذف</button>
-        </div>
-      ).join("")
-    : '<p class="empty">السلة فاضية.</p>';
-
-  document.getElementById("total").textContent=
-    cart.reduce((a,x)=>a+x.p,0)+" ج.م";
+function toggleCart(force){ const el=document.getElementById("cart"),ov=document.getElementById("overlay"); const open=force===true?!0:!el.classList.contains("open"); el.classList.toggle("open",open);ov.classList.toggle("show",open);
 }
-
-function toggleCart(force){
-  const el=document.getElementById("cart");
-  const ov=document.getElementById("overlay");
-
-  const open=force===true ? true : !el.classList.contains("open");
-
-  el.classList.toggle("open",open);
-  ov.classList.toggle("show",open);
+function openProduct(i){ current=i;const p=products[i]; document.getElementById("detailImg").src=p.img; document.getElementById("detailName").textContent=p.n; document.getElementById("detailDesc").textContent=p.cat==="سمارت"?"ساعة سمارت عملية وخفيفة، بتصميم شبابي وألوان متعددة.":"ساعة أنيقة بتصميم مميز تناسب الإطلالات اليومية والمناسبات."; document.getElementById("detailPrice").textContent=p.p+" ج.م"; document.getElementById("customerQty").value=1; document.getElementById("detailAdd").onclick=()=>add(i); document.getElementById("productPage").classList.add("show");document.body.classList.add("noScroll");
 }
-
-function openProduct(i){
-  current=i;
-
-  const p=products[i];
-
-  document.getElementById("detailImg").src=p.img;
-  document.getElementById("detailName").textContent=p.n;
-
-  document.getElementById("detailDesc").textContent=
-    p.cat==="سمارت"
-      ?"ساعة سمارت عملية وخفيفة، بتصميم شبابي وألوان متعددة."
-      :"ساعة أنيقة بتصميم مميز تناسب الإطلالات اليومية والمناسبات.";
-
-  document.getElementById("detailPrice").textContent=p.p+" ج.م";
-  document.getElementById("customerQty").value=1;
-
-  document.getElementById("detailAdd").onclick=()=>add(i);
-
-  document.getElementById("productPage").classList.add("show");
-  document.body.classList.add("noScroll");
+function closeProduct(){document.getElementById("productPage").classList.remove("show");document.body.classList.remove("noScroll");}
+async function sendToSheet(order){try{const body=new URLSearchParams(order);await fetch(API_URL,{method:"POST",mode:"no-cors",body});}catch(e){console.warn("Sheet request failed",e);}}
+function placeOrder(){ const p=products[current],name=document.getElementById("customerName").value.trim(),phone=document.getElementById("customerPhone").value.trim(),address=document.getElementById("customerAddress").value.trim(),qty=Math.max(1,parseInt(document.getElementById("customerQty").value)||1); if(!name||!phone||!address){alert("اكتب الاسم ورقم الهاتف والعنوان الأول.");return;} const total=p.p*qty,orderId="W"+Date.now().toString().slice(-8); sendToSheet({orderId,name,phone,address,product:p.n,price:total,status:"جديد",quantity:qty}); const msg=`مرحباً WATCHY، أريد طلب:%0Aالطلب: ${orderId}%0Aالساعة: ${encodeURIComponent(p.n)}%0Aالكمية: ${qty}%0Aالإجمالي: ${total} ج.م%0Aالاسم: ${encodeURIComponent(name)}%0Aالهاتف: ${encodeURIComponent(phone)}%0Aالعنوان: ${encodeURIComponent(address)}`; window.open(`https://wa.me/${WA}?text=${msg}`,"_blank");
 }
-
-function closeProduct(){
-  document.getElementById("productPage").classList.remove("show");
-  document.body.classList.remove("noScroll");
+function checkout(){ if(!cart.length){alert("أضف منتج للسلة أولاً");return;} const names=cart.map(x=>x.n).join("، "),total=cart.reduce((a,x)=>a+x.p,0); window.open(`https://wa.me/${WA}?text=${encodeURIComponent("مرحباً WATCHY، أريد طلب "+names+" - الإجمالي "+total+" ج.م")}`,"_blank");
 }
+renderSections();render();
 
-async function sendToSheet(order){
-  try{
-    const body=new URLSearchParams(order);
-
-    await fetch(API_URL,{
-      method:"POST",
-      mode:"no-cors",
-      body
-    });
-  }catch(e){
-    console.warn("Sheet request failed",e);
-  }
-}
-
-function placeOrder(){
-  const p=products[current];
-
-  const name=document.getElementById("customerName").value.trim();
-  const phone=document.getElementById("customerPhone").value.trim();
-  const address=document.getElementById("customerAddress").value.trim();
-
-  const qty=Math.max(
-    1,
-    parseInt(document.getElementById("customerQty").value)||1
-  );
-
-  if(!name!phone!address){
-    alert("اكتب الاسم ورقم الهاتف والعنوان الأول.");
-    return;
-  }
-
-  const total=p.p*qty;
-  const orderId="W"+Date.now().toString().slice(-8);
-
-  sendToSheet({
-    orderId,
-    name,
-    phone,
-    address,
-    product:p.n,
-    price:total,
-    status:"جديد",
-    quantity:qty
-  });
-
-  const msg=
-    مرحباً WATCHY، أريد طلب:%0A+
-    الطلب: ${orderId}%0A+
-    الساعة: ${encodeURIComponent(p.n)}%0A+
-    الكمية: ${qty}%0A+
-    الإجمالي: ${total} ج.م%0A+
-    الاسم: ${encodeURIComponent(name)}%0A+
-    الهاتف: ${encodeURIComponent(phone)}%0A+
-    العنوان: ${encodeURIComponent(address)};
-
-  window.open(
-    https://wa.me/${WA}?text=${msg},
-    "_blank"
-  );
-}
-
-function checkout(){
-  if(!cart.length){
-    alert("أضف منتج للسلة أولاً");
-    return;
-  }
-
-  const names=cart.map(x=>x.n).join("، ");
-  const total=cart.reduce((a,x)=>a+x.p,0);
-  window.open(
-    https://wa.me/${WA}?text=${encodeURIComponent(
-      "مرحباً WATCHY، أريد طلب "+names+" - الإجمالي "+total+" ج.م"
-    )},
-    "_blank"
-  );
-}
-
-
-/* =========================
-   WELCOME MENU
-   ========================= */
 
 function closeWelcomePicker(){
   const el=document.getElementById("welcomePicker");
-
   if(!el)return;
-
   el.classList.remove("show");
   document.body.classList.remove("welcomeLocked");
 }
-
-
-/* فتح القسم من أيقونة البداية */
 function scrollToSection(target){
-
-  const el =
-    target==="all"
-      ? document.getElementById("shop")
-      : document.getElementById(target);
-
-  if(!el)return;
-
-  const headerOffset=90;
-
-  const top=
-    el.getBoundingClientRect().top+
-    window.pageYOffset-
-    headerOffset;
-
-  window.scrollTo({
-    top,
-    behavior:"smooth"
-  });
+  const el = target === "all" ? document.getElementById("shop") : document.getElementById(target);
+  if(!el) return;
+  const headerOffset = 90;
+  const top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+  window.scrollTo({top, behavior:"smooth"});
 }
-
-
-/* =========================
-   FIXED WELCOME ICON ACTION
-   ========================= */
-
 function chooseWelcome(target){
-
-  /* إغلاق شاشة الاختيارات */
   closeWelcomePicker();
-
-  /* تأخير بسيط حتى تختفي الشاشة */
-  setTimeout(()=>{
-
-    const section=document.getElementById(target);
-
-    if(section){
-
-      const headerOffset=90;
-
-      const top=
-        section.getBoundingClientRect().top+
-        window.pageYOffset-
-        headerOffset;
-
-      window.scrollTo({
-        top,
-        behavior:"smooth"
-      });
-
-    }
-
-  },180);
+  setTimeout(()=>scrollToSection(target), 180);
 }
-
-
-/* نخلي الدالة متاحة للـonclick في HTML */
-window.chooseWelcome=chooseWelcome;
-window.scrollToSection=scrollToSection;
-
-
-/* =========================
-   CATEGORY NAVIGATION
-   ========================= */
-
+window.chooseWelcome = chooseWelcome;
+window.scrollToSection = scrollToSection;
 document.addEventListener("DOMContentLoaded",()=>{
-
-  document.querySelectorAll(".categoryNav a").forEach(a=>{
-
-    a.addEventListener("click",e=>{
-
-      const target=
-        (a.getAttribute("href")||"").replace("#","");
-
-      if(target){
-
-        e.preventDefault();
-        scrollToSection(target);
-
-      }
-
+  document.querySelectorAll('.categoryNav a').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const target=(a.getAttribute('href')||'').replace('#','');
+      if(target){e.preventDefault();scrollToSection(target);}
     });
-
   });
-
 });
-
-
-/* =========================
-   OPEN WELCOME SCREEN
-   ========================= */
-
 window.addEventListener("load",()=>{
-
   document.body.classList.add("welcomeLocked");
-
-  const picker=
-    document.getElementById("welcomePicker");
-
-  if(picker){
-    picker.classList.add("show");
-  }
-
+  const picker=document.getElementById("welcomePicker");
+  if(picker) picker.classList.add("show");
 });
-
-
-/* =========================
-   START
-   ========================= */
-
-renderSections();
-render();
-{"n":"Swarovski Style Bracelet Silver","d":"Swarovski Style — أسورة فضي","p":200,"img":"images/1000467458.jpg","cat":"حريمي"},
