@@ -19,7 +19,6 @@ function checkout(){ if(!cart.length){alert("أضف منتج للسلة أولا
 }
 renderSections();render();
 
-
 function closeWelcomePicker(){
   const el=document.getElementById("welcomePicker");
   if(!el)return;
