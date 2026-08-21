@@ -263,7 +263,7 @@ body.welcomeLocked{overflow:hidden}
     padding: 22px 12px 15px !important;
   }
     .welcomeGrid {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 7px !important;
   }
 
@@ -306,9 +306,10 @@ body.welcomeLocked{overflow:hidden}
   }
 
   .grid,
-  .categorySection .grid {
+.categorySection .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
     gap: 6px !important;
-  }
+}
 
   .welcomeGrid {
     grid-template-columns: repeat(2, 1fr) !important;
